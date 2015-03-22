@@ -24,11 +24,11 @@ class Transliteration:
                 raise AttributeError("'Transliteration' object has no attribute '{name}'".format(name=name))
             TransClass = getattr(module, translit_method.title())
             
-            def get_translit():
+            def get_translit(color=False):
                 merge_list = list()
                 for syl in self.text:
                     tr = TransClass(syl)
-                    syl = ("" if tr.can_merge_left() else " ") + tr.syl + ("" if tr.can_merge_right() else " ")
+                    syl = ("" if tr.can_merge_left() else " ") + (tr.get_color() if color else tr.syl) + ("" if tr.can_merge_right() else " ")
                     merge_list.append(syl)
                 return re.sub("[ ]+", " ", "".join(merge_list)).strip()
                 
