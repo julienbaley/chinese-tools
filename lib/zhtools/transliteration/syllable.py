@@ -1,6 +1,6 @@
 import re
 
-class Syllable:
+class Syllable:    
     format = "[a-zA-Zü]{1,6}[1-5]?"
     
     colour_coding = {   1 : "008000", #"green",
@@ -16,7 +16,9 @@ class Syllable:
         self.parse()
     
     def is_valid(self):
-        return re.match("^" + Syllable.format + "$", self.syl)
+        if not hasattr(self, "valid"):
+            self.valid = bool(re.match("^" + Syllable.format + "$", self.syl))
+        return self.valid
     
     def parse(self):
         if self.is_valid():
@@ -29,5 +31,11 @@ class Syllable:
     
     def get_color(self):
         return '<span style="color:#{col}">{syl}</span>'.format(col=Syllable.colour_coding[self.tone], syl=self.syl)
+    
+    def can_merge_left(self):
+        return not self.syl.istitle()
+    
+    def can_merge_right(self):
+        return len(self.syl) > 1 or not self.syl.istitle()
     
     def __str__(self): return self.syl
