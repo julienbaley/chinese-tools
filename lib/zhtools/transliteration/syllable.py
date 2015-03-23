@@ -1,13 +1,8 @@
 import re
+from . import colour
 
 class Syllable:    
     format = "[a-zA-Zü]{1,6}[1-5]?"
-    
-    colour_coding = {   1 : "008000", #"green",
-                        2 : "0000FF", #"blue",
-                        3 : "800080", #"purple",
-                        4 : "FF0000", #"red",
-                        5 : "000000"} #"black"
     
     def __init__(self, syllable):
         self.syl = syllable
@@ -29,8 +24,8 @@ class Syllable:
             else:
                 self.phones = self.syl[:-1]
     
-    def get_color(self):
-        return '<span style="color:#{col}">{syl}</span>'.format(col=Syllable.colour_coding[self.tone], syl=self.syl)
+    def get_colour(self):
+        return colour.apply_colour(self.syl, self.tone)
     
     def can_merge_left(self):
         return not self.syl.istitle()

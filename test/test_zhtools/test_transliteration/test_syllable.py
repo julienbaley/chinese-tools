@@ -21,7 +21,3 @@ class TestSyllable(unittest.TestCase):
         self.assertEqual(s.syl, "can1")
         self.assertEqual(s.tone, 1)
         self.assertEqual(s.phones, "can")
-    
-    def test_color_is_only_html_marking(self):
-        s = Syllable("can1")
-        self.assertEqual(re.sub("<[^>]*>", "", s.get_color()), s.syl)
