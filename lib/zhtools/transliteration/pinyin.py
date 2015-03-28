@@ -38,12 +38,13 @@ class Pinyin(Syllable):
             return re.search("(?P<last_vowel>[aeiouü])[^aeiouü]*$", syllable, re.IGNORECASE).group("last_vowel")
     
     def to_pinyin(self):
-        if self.phones == "m":
-            if self.tone == 2:
-                self.syl = "ḿ"
-            elif self.tone == 4:
-                self.syl = "m`"
-        elif 0 < self.tone < 5: #tone 5 is unmarked
-            v = Pinyin.find_marked_vowel(self.phones)
-            replacement = Pinyin.tone_marks[v.lower()][self.tone-1]
-            self.syl = self.phones.replace(v, replacement if v.islower() else replacement.upper())
+        if len(self.phones) > 0:
+            if self.phones == "m":
+                if self.tone == 2:
+                    self.syl = "ḿ"
+                elif self.tone == 4:
+                    self.syl = "m`"
+            else:
+                v = Pinyin.find_marked_vowel(self.phones)
+                replacement = Pinyin.tone_marks[v.lower()][self.tone-1] if 0 < self.tone < 5 else v #tone 5 is unmarked
+                self.syl = self.phones.replace(v, replacement if v.islower() else replacement.upper())

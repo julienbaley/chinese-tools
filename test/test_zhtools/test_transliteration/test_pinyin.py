@@ -18,6 +18,14 @@ class TestPinyin(unittest.TestCase):
     def test_normal_syllable(self):
         p = Pinyin("can1")
         self.assertEqual(p.syl, "cān")
+    
+    def test_light_tone(self):
+        p = Pinyin("mo5")
+        self.assertEqual(p.syl, "mo")
+    
+    def test_no_tone(self):
+        p = Pinyin("mo")
+        self.assertEqual(p.syl, "mo")
 
     def test_handles_special_case_m(self):
         p = Pinyin("m2")
