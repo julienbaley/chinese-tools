@@ -9,6 +9,7 @@ class Transliteration:
     def __init__(self, text):
         self.text = Transliteration.split_syllables(text.replace("u:","ü"))
     
+    @staticmethod
     def split_syllables(s):
         return re.findall(Syllable.format, s)
     

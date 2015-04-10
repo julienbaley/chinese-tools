@@ -13,6 +13,7 @@ class Pinyin(Syllable):
                    "u":"ūúǔù",
                    "ü":"ǖǘǚǜ"}
     
+    @staticmethod
     def find_marked_vowel(syllable):
         """Returns the vowel of the syllable that should receive the tone mark.
         
