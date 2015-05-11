@@ -39,7 +39,8 @@ class CEdict:
 
     def parse_dict(self, filename):
         # line format: trad simp [pin1 yin1] /def1/def2/.../defn/
-        regex = "^(?P<trad>\S+) (?P<simp>\S+) \[(?P<py>.*?)\] /(?P<defs>.*)/$"
+        regex = "^(?P<trad>\S+) (?P<simp>\S+) \[(?P<pinyin>.*?)\] "\
+                + "/(?P<defs>.*)/$"
         parse_regex = re.compile(regex)
         self.dict = defaultdict(list)
 
