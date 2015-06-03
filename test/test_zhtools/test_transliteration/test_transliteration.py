@@ -12,6 +12,7 @@ class TestTransliteration(unittest.TestCase):
     def test_pinyin(self):
         self.assertEqual(Transliteration("zhe4r").get_pinyin(), "zhèr")
         self.assertEqual(Transliteration("lu:e4").get_pinyin(), "lüè")
+        self.assertEqual(Transliteration("yi1hui4r5").get_pinyin(), "yīhuìr")
     
     def test_pinyin_capitals(self):
         self.assertEqual(Transliteration("Mao2 Ze2 dong1").get_pinyin(), "Máo Zédōng")

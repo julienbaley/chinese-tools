@@ -49,6 +49,8 @@ class Pinyin(Syllable):
                     self.syl = "ḿ"
                 elif self.tone == 4:
                     self.syl = "m`"
+            elif self.phones == "r":
+                self.syl = "r"
             else:
                 v = Pinyin.find_marked_vowel(self.phones)
                 if 0 < self.tone < 5:
