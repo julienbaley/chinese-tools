@@ -2,8 +2,6 @@ import sys
 from lib.zhtools.segment import get_vocab
 from lib.zhtools.anki import Anki
 
-from collections import Counter
-from itertools import takewhile, chain
 
 def cumul_freq(cnt):
     total_freq = sum(cnt.values())
@@ -28,7 +26,7 @@ print(len(voc))
 
 for lvl in [1, 2, 3]:
     with open("data/hsk{lvl}".format(lvl=lvl)) as f:
-        for  line in f:
+        for line in f:
             voc.add(line.strip())
 
 for w in voc:

@@ -1,8 +1,9 @@
 from zhtools.transliteration.pinyin import Pinyin
 import unittest
 
+
 class TestPinyin(unittest.TestCase):
-    
+
     def test_find_marked_vowel(self):
         self.assertEqual(Pinyin.find_marked_vowel("chuang"), "a")
         self.assertEqual(Pinyin.find_marked_vowel("duo"), "o")
@@ -14,15 +15,15 @@ class TestPinyin(unittest.TestCase):
         self.assertEqual(Pinyin.find_marked_vowel("Jing4"), "i")
         self.assertEqual(Pinyin.find_marked_vowel("Ao4"), "A")
         self.assertEqual(Pinyin.find_marked_vowel("Ou1"), "O")
-    
+
     def test_normal_syllable(self):
         p = Pinyin("can1")
         self.assertEqual(p.syl, "cān")
-    
+
     def test_light_tone(self):
         p = Pinyin("mo5")
         self.assertEqual(p.syl, "mo")
-    
+
     def test_no_tone(self):
         p = Pinyin("mo")
         self.assertEqual(p.syl, "mo")

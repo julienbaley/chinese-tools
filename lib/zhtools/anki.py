@@ -1,17 +1,19 @@
 import json
-import os
 import re
 import sqlite3
 from contextlib import contextmanager
 
+
 def strip_html(s):
     return re.sub(r"<[^<]*?>", "", s)
 
+
 @contextmanager
 def connect(filename):
-    conn = sqlite3.connect("file:{path}?mode=ro".format(path=filename), uri=True)
+    conn = sqlite3.connect("file:{path}?mode=ro".format(path=filename),
+                           uri=True)
     conn.row_factory = sqlite3.Row
-    yield conn#.cursor()
+    yield conn
     conn.close()
 
 
@@ -30,7 +32,7 @@ class Anki:
                     name_matches = dval["name"] == deck_name
                 if name_matches:
                     yield did
-    
+
     def get_vocab(self, deck_name, subdecks=True):
         dids = self.get_deck_ids(deck_name, subdecks)
         where_clause = " or ".join("did=={}".format(did) for did in dids)

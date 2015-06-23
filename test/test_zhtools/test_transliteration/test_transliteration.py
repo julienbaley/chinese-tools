@@ -6,10 +6,10 @@ class TestTransliteration(unittest.TestCase):
 
     def test_split_syllables(self):
         self.assertEqual(Transliteration("wo3bu4zhi1dao4").text,
-                        ["wo3","bu4","zhi1","dao4"])
-        self.assertEqual(Transliteration("zhe4r").text, ["zhe4","r"])
-        self.assertEqual(Transliteration("san1 C").text, ["san1","C"])
-        self.assertEqual(Transliteration("A B zhi1").text, ["A","B","zhi1"])
+                         ["wo3", "bu4", "zhi1", "dao4"])
+        self.assertEqual(Transliteration("zhe4r").text, ["zhe4", "r"])
+        self.assertEqual(Transliteration("san1 C").text, ["san1", "C"])
+        self.assertEqual(Transliteration("A B zhi1").text, ["A", "B", "zhi1"])
 
     def test_pinyin(self):
         self.assertEqual(Transliteration("zhe4r").get_pinyin(), "zhèr")

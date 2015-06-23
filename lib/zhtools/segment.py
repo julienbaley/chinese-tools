@@ -45,7 +45,7 @@ def segment(txt):
             p.communicate()
 
         with open(fout) as f:
-            for line in f:#.decode("utf-8").strip().splitlines():
+            for line in f:
                 yield line.strip()
 
 

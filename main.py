@@ -2,16 +2,17 @@ import sys
 from lib.zhtools.cedict import CEdict
 from lib.zhtools.transliteration.colour import strip_colour
 
+
 def get_hsk():
     hsk = dict()
-    for lvl in range(1,7):
+    for lvl in range(1, 7):
         with open("data/hsk{lvl}".format(lvl=lvl)) as f:
             for line in f:
                 word = line.strip()
                 if word not in hsk:
                     hsk[word] = "hsk{lvl}".format(lvl=lvl)
     return hsk
-            
+
 
 if __name__ == "__main__":
     cedict = CEdict(colour=True)
@@ -34,5 +35,6 @@ if __name__ == "__main__":
             e = entries[choice]
             lvl = hsk.get(strip_colour(e.simp), "")
             defs = input("Definition? ")
-            with open(filename,"a") as g:
-                g.write("\t".join([e.simp, e.trad, e.pinyin, defs, lvl]) + "\n")
+            with open(filename, "a") as g:
+                g.write("\t".join([e.simp, e.trad, e.pinyin, defs, lvl])
+                        + "\n")
