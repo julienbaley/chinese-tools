@@ -10,7 +10,10 @@ class Transliteration:
 
     @staticmethod
     def split_syllables(s):
-        return re.findall(Syllable.format, s)
+        """Split along syllables but keep the rest"""
+        return [syl.strip()
+                for syl in re.split("("+Syllable.format+")", s)
+                if len(syl.strip()) > 0]
 
     def __getattr__(self, name):
         # get_pinyin will use pinyin.Pinyin,
