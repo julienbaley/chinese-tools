@@ -31,15 +31,15 @@ class TestColour(unittest.TestCase):
 
     def test_minimize_colour(self):
         # same colour thrice
-        s = ("""<span style="color:#0000FF">Lián</span>"""
-             """<span style="color:#0000FF">hé</span>"""
-             """<span style="color:#0000FF">guó</span>""")
+        s = ("""<span class="t2">Lián</span>"""
+             """<span class="t2">hé</span>"""
+             """<span class="t2">guó</span>""")
         self.assertEqual(colour.minimize_colour(s),
-                         """<span style="color:#0000FF">Liánhéguó</span>""")
+                         """<span class="t2">Liánhéguó</span>""")
 
         # has some black
-        s = ("""<span style="color:#0000FF">Lián</span>"""
-             """<span style="color:#0000FF">hé</span>"""
-             """<span style="color:#000000">guo</span>""")
+        s = ("""<span class="t2">Lián</span>"""
+             """<span class="t2">hé</span>"""
+             """<span class="t5">guo</span>""")
         self.assertEqual(colour.minimize_colour(s),
-                         """<span style="color:#0000FF">Liánhé</span>guo""")
+                         """<span class="t2">Liánhé</span>guo""")

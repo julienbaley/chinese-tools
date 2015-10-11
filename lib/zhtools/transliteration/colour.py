@@ -9,8 +9,8 @@ colour_coding = {0: "000000",  # "black"
 
 
 def apply_colour(s, tone):
-    return '<span style="color:#{col}">{txt}</span>'\
-        .format(col=colour_coding[tone], txt=s)
+    return '<span class="t{tone}">{txt}</span>'\
+        .format(tone=tone, txt=s)
 
 
 def strip_colour(s, colour=None):
@@ -19,6 +19,7 @@ def strip_colour(s, colour=None):
             s = strip_colour(s, colour)
     else:
         regex = apply_colour("([^<]+)", colour)
+        print(regex)
         s = re.sub(regex, r"\1", s)
     return s
 
@@ -34,6 +35,7 @@ def copy_colour(src, dest):
 def minimize_colour(s):
     # remove black
     s = strip_colour(s, 0)
+    s = strip_colour(s, 5)
 
     # factorize identical consecutive tags
     old_s = ""
