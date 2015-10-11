@@ -19,7 +19,6 @@ def strip_colour(s, colour=None):
             s = strip_colour(s, colour)
     else:
         regex = apply_colour("([^<]+)", colour)
-        print(regex)
         s = re.sub(regex, r"\1", s)
     return s
 
