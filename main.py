@@ -36,5 +36,5 @@ if __name__ == "__main__":
             lvl = hsk.get(strip_colour(e.simp), "")
             defs = input("Definition? ")
             with open(filename, "a") as g:
-                g.write("\t".join([e.simp, e.trad, e.pinyin, defs, lvl])
+                g.write("\t".join([defs, e.simp, e.trad, e.pinyin, lvl])
                         + "\n")
